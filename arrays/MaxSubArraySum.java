@@ -1,5 +1,5 @@
 import java.util.*;
-
+// time complexity of the this code is O(n2)
 public class MaxSubArraySum{
 
     public static void printSubArrays(int numbers[]){
@@ -15,6 +15,7 @@ public class MaxSubArraySum{
             int start = i;
             for(int j=i; j<numbers.length; j++){
                 int end = j;
+                // Here ? is the ternary operator which indicates the if statement
                 currSum = start == 0 ? prefix[end] : prefix[end] - prefix[start - 1];
                 
                 // System.out.println(currSum);
@@ -23,7 +24,8 @@ public class MaxSubArraySum{
                 }
                 
             }
-            // System.out.println();
+            // S
+            
         }
         System.out.println("Max subarrays sum is : "+maxSum);
     }
