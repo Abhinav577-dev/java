@@ -10,7 +10,7 @@ public class BinarySrch{
             if(numbers[mid] == key){
                 return mid;
             }
-            if(numbers[mid] < key){
+            else if(numbers[mid] < key){
                 start = mid + 1;
             } else{
                 end = mid -1;
@@ -20,6 +20,7 @@ public class BinarySrch{
     }
     public static void main(String[] args){
         int numbers[] = {2,56,35,6,5,68,47,75};
+        Arrays.sort(numbers);
         int key = 56;
         System.out.println("index of the key is : "+ BinarySearch(numbers, key));
 
