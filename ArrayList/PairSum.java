@@ -2,7 +2,7 @@ import java.util.*;
 
 class PairSum {
 
-    public static void pairSum()
+    public static void pairSum(ArrayList<Integer> list)
 
     public static void main(String[] args) {
         ArrayList<Integer> list = new ArrayList<>();
