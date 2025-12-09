@@ -114,21 +114,57 @@ class MergeSort {
         System.out.println("null");
     }
 
+    public void zigZag() {
+        //find mid
+        Node slow = head;
+        Node fast = head.next;
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node mid = slow;
+
+        //reverse 2nd half
+        Node curr = mid.next;
+        mid.next = null;
+        Node prev = null;
+        Node next;
+
+        while(curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node left = head;
+        Node right = prev;
+        Node nextL, nextR;
+        
+        //alt merge - zig-zag merge
+        while(left != null && right != null) {
+            nextL = left.next;
+            left.next = right;
+            nextR = right.next;
+            right.next = nextL;
+            left = nextL;
+            right = nextR;
+        }
+    }
+
     public static void main(String[] args) {
         MergeSort ll = new MergeSort();
 
         ll.addLast(1);
         ll.addLast(2);
-        ll.addFirst(0);
-        ll.addLast(5);
         ll.addLast(3);
-
-        System.out.print("Original: ");
+        ll.addLast(4);
+        ll.addLast(5);
         ll.print();
 
-        ll.head = ll.mergeSort(ll.head);
+        // ll.head = ll.mergeSort(ll.head);
 
-        System.out.print("Sorted:   ");
+        // System.out.print("Sorted:   ");
+        ll.zigZag();
         ll.print();
     }
 }
