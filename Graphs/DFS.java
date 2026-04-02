@@ -67,12 +67,29 @@ class DFS {
         }
     }
 
+    public static boolean hasPath(ArrayList<Edge>[] graph, int src, int dest, boolean vis[]) {
+        if(src == dest) {
+            return true;
+        }
+        vis[src] = true;
+
+        for(int i=0; i<graph[src].size(); i++) {
+            Edge e = graph[src].get(i);
+            if(!vis[e.dest] && hasPath(graph, e.dest, dest, vis)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static void main(String[] args) {
         int V = 7;
         ArrayList<Edge>[] graph = new ArrayList[V]; // null -> empty arraylist
 
         createGraph(graph);
-        dfs(graph, 0, new boolean[V]);
+        // dfs(graph, 0, new boolean[V]);
         
+        System.out.println(hasPath(graph, 0, 4, new boolean[V]));
     }
 }
