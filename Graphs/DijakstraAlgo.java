@@ -34,7 +34,7 @@ class DijakstraAlgo {
 
     }
 
-    static class Pair{
+    static class Pair implements Comparable<Pair> {
         int n;
         int path;
 
@@ -88,7 +88,7 @@ class DijakstraAlgo {
         //print all source to vertices
 
         for(int i=0; i<dist.length; i++) {
-            System.out.println(dist[i] + " ");
+            System.out.print(dist[i] + " ");
         }
         System.out.println();
     }
